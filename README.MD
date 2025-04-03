@@ -29,19 +29,26 @@ Go-Chatty is a TCP-based chat application focused on **privacy**, **security**, 
 
 ## 🛠️ How to Run Go-Chatty
 
+You can spin up a Docker container instance on a VPS or your local machine and enjoy a private chat.
+
 ### 📦 Using Docker
 
 To run the server:
 
 ```bash
-docker run -d --name Go-Chatty-server -e SECRET_KEY="my-key" -p 8080:8080 Go-Chatty server
+docker run -it --rm -p 8080:8080 -e SERVER_IP=0.0.0.0 -e SERVER_PORT=<serverPort> go-chatty server
 ```
 
 To run the client:
 
 ```bash
-docker run -it --rm Go-Chatty client --server-ip "SERVER_IP" --server-port 8080
+docker run -it --rm -e SERVER_IP=<serverIp> -e SERVER_PORT=<serverPort> shadychatty client
 ```
+
+Default values:
+
+- SERVER_IP: 0.0.0.0
+- SERVER_PORT: 3333
 
 ### 🏗️ Running Manually (Go)
 
@@ -54,20 +61,39 @@ git clone https://github.com/your-user/go-chatty.git && cd go-chatty
 **2. Build the code:**
 
 ```bash
-go build -o go-chatty
+go build -o go-chatty ./cmd/socket/main.go
 ```
 
 **3. Start the server:**
 
+- linux:
+
 ```bash
-./Go-Chatty server --port 8080 --secret "my-key"
+./go-chatty -instanceType=server -ip=127.0.0.1 -port=3333
+```
+
+-Windows:
+
+```bash
+.\go-chatty.exe -instanceType=server -ip=127.0.0.1 -port=3333
 ```
 
 **4. Connect a client:**
 
+- linux:
+
 ```bash
-./Go-Chatty client --server-ip "SERVER_IP" --server-port 8080
+
+./go-chatty -instanceType=client -ip=<serverIP> -port=<serverPort>
 ```
+
+-Windows:
+
+```bash
+.\go-chatty.exe -instanceType=client -ip=<serverIP> -port=<serverPort>
+```
+
+You can also set environment variables for the server ip and port and ommit the -ip and -port flags.
 
 ---
 

@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN  add
+RUN  go build -o go-chatty ./cmd/socket/main.go
 
 CMD ["./go-chatty"]

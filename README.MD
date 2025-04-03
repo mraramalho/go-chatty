@@ -15,7 +15,7 @@ Go-Chatty is a TCP-based chat application focused on **privacy**, **security**, 
 
 ## 🚀 Main Features
 
-✅ **End-to-end encryption (AES-256)** to protect messages exchanged between participants. (at development stage) 
+✅ **End-to-end encryption (AES-256)** to protect messages exchanged between participants. (at development stage)
 ✅ **Authentication via Secret Key**, ensuring only authorized users can access the chat.  
 ✅ **No message storage**, the server only relays messages without keeping logs.  
 ✅ **Open-source** and **self-hosted**, allowing users to run their own chat servers.  
@@ -27,20 +27,20 @@ Go-Chatty is a TCP-based chat application focused on **privacy**, **security**, 
 
 ---
 
-## 🛠️ How to Run ShadyChatty
+## 🛠️ How to Run Go-Chatty
 
 ### 📦 Using Docker
 
 To run the server:
 
 ```bash
-docker run -d --name shadychatty-server -e SECRET_KEY="my-key" -p 8080:8080 shadychatty server
+docker run -d --name Go-Chatty-server -e SECRET_KEY="my-key" -p 8080:8080 Go-Chatty server
 ```
 
 To run the client:
 
 ```bash
-docker run -it --rm shadychatty client --server-ip "SERVER_IP" --server-port 8080
+docker run -it --rm Go-Chatty client --server-ip "SERVER_IP" --server-port 8080
 ```
 
 ### 🏗️ Running Manually (Go)
@@ -60,20 +60,20 @@ go build -o go-chatty
 **3. Start the server:**
 
 ```bash
-./shadychatty server --port 8080 --secret "my-key"
+./Go-Chatty server --port 8080 --secret "my-key"
 ```
 
 **4. Connect a client:**
 
 ```bash
-./shadychatty client --server-ip "SERVER_IP" --server-port 8080
+./Go-Chatty client --server-ip "SERVER_IP" --server-port 8080
 ```
 
 ---
 
 ## 🔒 Security & Privacy
 
-ShadyChatty stands out by prioritizing user privacy. Here’s how:
+Go-Chatty stands out by prioritizing user privacy. Here’s how:
 
 🔐 **AES-256 Encryption:** All messages sent are encrypted using a key derived from the Secret Key, preventing any intermediary from intercepting and decrypting messages.  
 🔑 **Authentication via Secret Key:** Only users with the correct key can enter the chat, increasing control over participation.  
@@ -85,9 +85,9 @@ ShadyChatty stands out by prioritizing user privacy. Here’s how:
 
 ---
 
-## 💡 Benefits of ShadyChatty Over Other Chats
+## 💡 Benefits of Go-Chatty Over Other Chats
 
-📡 **No Centralized Server**: Unlike WhatsApp, Telegram, and Messenger, where messages pass through servers that may store logs, ShadyChatty operates independently and retains no data.  
+📡 **No Centralized Server**: Unlike WhatsApp, Telegram, and Messenger, where messages pass through servers that may store logs, Go-Chatty operates independently and retains no data.  
 🎭 **Complete Anonymity**: No personal information is required to join the conversation, unlike conventional services that require emails, phone numbers, or registrations.  
 🛠 **Customizable**: Users can run the chat on their own machines or servers, adjusting configurations to meet specific security requirements.  
 🌍 **Platform Independent**: Can be run on any system that supports Go or Docker.  
@@ -105,7 +105,7 @@ This project is **open-source** and distributed under the MIT license, allowing 
 
 Contributions are always welcome! If you want to suggest improvements, report bugs, or add new features, feel free to open **issues** or submit **pull requests**. 😃
 
-For discussions and feedback, contact us via [GitHub Issues](https://github.com/mraramlho/shadychatty/issues).
+For discussions and feedback, contact us via [GitHub Issues](https://github.com/mraramlho/Go-Chatty/issues).
 
 ---
 

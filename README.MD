@@ -72,7 +72,7 @@ go build -o go-chatty ./cmd/socket/main.go
 ./go-chatty -instanceType=server -ip=127.0.0.1 -port=3333
 ```
 
--Windows:
+- Windows:
 
 ```bash
 .\go-chatty.exe -instanceType=server -ip=127.0.0.1 -port=3333
@@ -87,7 +87,7 @@ go build -o go-chatty ./cmd/socket/main.go
 ./go-chatty -instanceType=client -ip=<serverIP> -port=<serverPort>
 ```
 
--Windows:
+- Windows:
 
 ```bash
 .\go-chatty.exe -instanceType=client -ip=<serverIP> -port=<serverPort>

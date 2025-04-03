@@ -1,9 +1,9 @@
-FROM golang:1.21-alpine
+FROM golang:1.24-alpine
 
 WORKDIR /app
 
-COPY chat.go .
+COPY . .
 
-RUN go build -o go-chatty ./cmd/socket/main.go
+RUN  add
 
 CMD ["./go-chatty"]

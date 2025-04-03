@@ -6,7 +6,7 @@
    \____|\___/     \____|_| |_|\__,_|\__|\__|\__, |
                                              |___/
    A simple TCP chat application
-   ---------------------------
+
 ```
 
 # 📢 Go-Chatty - A Secure TCP Chat
@@ -36,13 +36,18 @@ You can spin up a Docker container instance on a VPS or your local machine and e
 To run the server:
 
 ```bash
-docker run -it --rm -p 8080:8080 -e SERVER_IP=0.0.0.0 -e SERVER_PORT=<serverPort> go-chatty server
+git clone https://github.com/your-user/go-chatty.git && cd go-chatty
+docker build -t go-chatty .
+```
+
+```bash
+docker run -it --rm -p 8080:8080 -e SERVER_IP=0.0.0.0 -e SERVER_PORT=8080 go-chatty /app/go-chatty -instanceType=server
 ```
 
 To run the client:
 
 ```bash
-docker run -it --rm -e SERVER_IP=<serverIp> -e SERVER_PORT=<serverPort> shadychatty client
+docker run -it --rm -p 8080:8080 -e SERVER_IP=0.0.0.0 -e SERVER_PORT=8080 go-chatty /app/go-chatty -instanceType=client
 ```
 
 Default values:

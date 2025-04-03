@@ -84,6 +84,12 @@ func (s *Server) ServeAndListen() {
 // getSecretKey gets the secret key from the user to be used in the server
 // as a password to access the server and encript the messages.
 func getSecretKey() string {
+	secretKey := os.Getenv("SECRET_KEY")
+	if secretKey != "" {
+		fmt.Println("Using secret key from environment variable")
+		return secretKey
+	}
+
 	fmt.Println("Define a server secret key:")
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()

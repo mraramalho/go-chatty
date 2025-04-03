@@ -62,12 +62,15 @@ func (c *Client) Connect() {
 	}
 	fmt.Print(prompt) // Display server prompt
 
-	// Read secret key from user
 	stdinReader := bufio.NewReader(os.Stdin)
-	secretKey, err := stdinReader.ReadString('\n')
-	if err != nil {
-		fmt.Printf("Error reading secret key: %v\n", err)
-		return
+	secretKey := os.Getenv("SECRET_KEY")
+	if secretKey == "" {
+		// Read secret key from user
+		secretKey, err = stdinReader.ReadString('\n')
+		if err != nil {
+			fmt.Printf("Error reading secret key: %v\n", err)
+			return
+		}
 	}
 
 	// Send secret key to server

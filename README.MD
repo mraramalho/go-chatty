@@ -6,7 +6,7 @@
    \____|\___/     \____|_| |_|\__,_|\__|\__|\__, |
                                              |___/
    A simple TCP chat application
-   ---------------------------
+
 ```
 
 # 📢 Go-Chatty - A Secure TCP Chat
@@ -35,14 +35,32 @@ You can spin up a Docker container instance on a VPS or your local machine and e
 
 To run the server:
 
+- Clone repo and build the image:
+
 ```bash
-docker run -it --rm -p 8080:8080 -e SERVER_IP=0.0.0.0 -e SERVER_PORT=<serverPort> go-chatty server
+git clone https://github.com/your-user/go-chatty.git && cd go-chatty
+docker build -t go-chatty .
+```
+
+- Run the server:
+
+```bash
+docker network create chat-network
+docker run -it --rm --name chat-server --network=chat-network -p 8080:8080 -e SERVER_IP=0.0.0.0 -e SERVER_PORT=8080 go-chatty /app/go-chatty -instanceType=server
 ```
 
 To run the client:
 
+- Runnning the client on the another vps as the server:
+
 ```bash
-docker run -it --rm -e SERVER_IP=<serverIp> -e SERVER_PORT=<serverPort> shadychatty client
+docker run -it --rm -p 8081:8080 -e SERVER_IP=172.233.13.72 -e SERVER_PORT=8080 go-chatty /app/go-chatty -instanceType=client
+```
+
+- Runnning the client on the same vps as the server:
+
+```bash
+docker run -it --rm --network=chat-network -e SERVER_IP=chat-server -e SERVER_PORT=8080 go-chatty /app/go-chatty -instanceType=client
 ```
 
 Default values:
@@ -69,13 +87,13 @@ go build -o go-chatty ./cmd/socket/main.go
 - linux:
 
 ```bash
-./go-chatty -instanceType=server -ip=127.0.0.1 -port=3333
+./go-chatty -instanceType=server -ip=0.0.0.0 -port=3333
 ```
 
 - Windows:
 
 ```bash
-.\go-chatty.exe -instanceType=server -ip=127.0.0.1 -port=3333
+.\go-chatty.exe -instanceType=server -ip=0.0.0.0 -port=3333
 ```
 
 **4. Connect a client:**
